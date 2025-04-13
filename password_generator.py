@@ -26,3 +26,6 @@ def generate_password(length, use_letters, use_numbers, use_special):
         return "Error: No character set selected."
 
     return ''.join(random.choice(characters) for _ in range(length))
+
+    password = generate_password(length, use_letters, use_numbers, use_special)
+    print(f"\nGenerated Password: {password}")

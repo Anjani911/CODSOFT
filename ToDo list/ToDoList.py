@@ -6,6 +6,11 @@ def display_menu():
     print("4. Delete Task")
     print("5. Exit")
 
+
+def add_task(tasks):
+    task = input("Enter the task description: ")
+    tasks.append({"task": task, "done": False})
+
 def main():
     tasks = []
     while True:

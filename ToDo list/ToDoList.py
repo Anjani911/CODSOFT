@@ -1,3 +1,5 @@
+import os
+
 def display_menu():
     print("\n--- To-Do List Menu ---")
     print("1. View Tasks")
@@ -35,6 +37,20 @@ def delete_task(tasks):
         print(f"Task '{deleted_task['task']}' has been deleted!")
     else:
         print("Invalid task number!")
+def save_tasks_to_file(tasks, filename="tasks.txt"):
+    with open(filename, 'w') as file:
+        for task in tasks:
+            file.write(f"{task['task']}|{task['done']}\n")
+
+def load_tasks_from_file(filename="tasks.txt"):
+    tasks = []
+    if os.path.exists(filename):
+        with open(filename, 'r') as file:
+            for line in file:
+                task, done = line.strip().split('|')
+                tasks.append({"task": task, "done": done == 'True'})
+    return tasks
+        
         
 def main():
     tasks = []

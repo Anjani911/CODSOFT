@@ -8,10 +8,9 @@ def display_menu():
     print("4. Delete Task")
     print("5. Exit")
 
-
 def add_task(tasks):
     task = input("Enter the task description: ")
-    tasks.append({"task": task, "done": False})
+    tasks.append({"task": task, "done": False})  # Store task with a "done" flag
 
 def view_tasks(tasks):
     if not tasks:
@@ -20,6 +19,7 @@ def view_tasks(tasks):
         for idx, task in enumerate(tasks, 1):
             status = "Done" if task["done"] else "Not Done"
             print(f"{idx}. {task['task']} - {status}")
+
 def mark_task_as_done(tasks):
     view_tasks(tasks)
     task_num = int(input("Enter the task number to mark as done: ")) - 1
@@ -37,6 +37,7 @@ def delete_task(tasks):
         print(f"Task '{deleted_task['task']}' has been deleted!")
     else:
         print("Invalid task number!")
+
 def save_tasks_to_file(tasks, filename="tasks.txt"):
     with open(filename, 'w') as file:
         for task in tasks:
@@ -50,28 +51,27 @@ def load_tasks_from_file(filename="tasks.txt"):
                 task, done = line.strip().split('|')
                 tasks.append({"task": task, "done": done == 'True'})
     return tasks
-        
-        
+
 def main():
-    tasks = []
+    tasks = load_tasks_from_file()  # Load tasks when the app starts
     while True:
         display_menu()
         choice = input("Enter your choice (1-5): ")
         
         if choice == '1':
-            print("Viewing tasks...")
+            view_tasks(tasks)
         elif choice == '2':
-            print("Adding a task...")
+            add_task(tasks)
         elif choice == '3':
-            print("Marking a task as done...")
+            mark_task_as_done(tasks)
         elif choice == '4':
-            print("Deleting a task...")
+            delete_task(tasks)
         elif choice == '5':
             print("Exiting...")
+            save_tasks_to_file(tasks)  # Save tasks before exiting
             break
         else:
             print("Invalid choice. Please enter 1-5.")
 
 if __name__ == "__main__":
     main()
-

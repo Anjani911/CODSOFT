@@ -27,6 +27,15 @@ def mark_task_as_done(tasks):
     else:
         print("Invalid task number!")
 
+def delete_task(tasks):
+    view_tasks(tasks)
+    task_num = int(input("Enter the task number to delete: ")) - 1
+    if 0 <= task_num < len(tasks):
+        deleted_task = tasks.pop(task_num)
+        print(f"Task '{deleted_task['task']}' has been deleted!")
+    else:
+        print("Invalid task number!")
+        
 def main():
     tasks = []
     while True:

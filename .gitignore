@@ -1,0 +1,7 @@
+# Ignore unnecessary Password Generator files
+/Task\ 3\ -\ Password\ Generator/passwordgen.py
+/Task\ 3\ -\ Password\ Generator/pass.py
+
+# Ignore any temp files
+*.pyc
+__pycache__/

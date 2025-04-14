@@ -8,4 +8,4 @@ This is a CLI-based Password Generator created for CodSoft's Python Internship.
 
 ## How to Run
 1. Open terminal
-2. Run: `python password_generator.py`
+2. Run: `python passwordgen.py`

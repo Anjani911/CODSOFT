@@ -11,6 +11,14 @@ def add_task(tasks):
     task = input("Enter the task description: ")
     tasks.append({"task": task, "done": False})
 
+def view_tasks(tasks):
+    if not tasks:
+        print("No tasks to display.")
+    else:
+        for idx, task in enumerate(tasks, 1):
+            status = "Done" if task["done"] else "Not Done"
+            print(f"{idx}. {task['task']} - {status}")
+
 def main():
     tasks = []
     while True:

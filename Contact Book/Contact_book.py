@@ -20,3 +20,24 @@ def add_contact():
         for i, contact in enumerate(contacts, 1):
             print(f"{i}. {contact['name']} | {contact['phone']} | {contact['email']} | {contact['address']}")
         print()
+
+def search_contact():
+    query = input("Enter name or phone to search: ")
+    found = False
+    for contact in contacts:
+        if query.lower() in contact['name'].lower() or query in contact['phone']:
+            print(f"{contact['name']} | {contact['phone']} | {contact['email']} | {contact['address']}")
+            found = True
+    if not found:
+        print("No matching contact found.\n")
+
+def update_contact():
+    phone = input("Enter phone number of the contact to update: ")
+    for contact in contacts:
+        if contact['phone'] == phone:
+            contact['name'] = input("Enter new name: ")
+            contact['email'] = input("Enter new email: ")
+            contact['address'] = input("Enter new address: ")
+            print("Contact updated successfully!\n")
+            return
+    print("Contact not found.\n")
